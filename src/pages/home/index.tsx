@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Category } from '../../data/types/category'
+import { Col } from '../../commons/components/col'
+import { Row } from '../../commons/components/row'
+import { Category as Cat } from '../../data/types/category'
 import { clearActiveJoke } from '../../store/slices'
 import {
 	getCategories,
@@ -11,6 +12,7 @@ import {
 	clearActiveCategory,
 } from '../../store/slices/category'
 import { SearchBar } from './components/search'
+import { Category } from './style/category'
 
 const HomePage = () => {
 	const dispatch = useDispatch()
@@ -32,26 +34,24 @@ const HomePage = () => {
 	}
 
 	return (
-		<ul>
-			{isLoading ? (
-				<h4>loading...</h4>
-			) : (
-				<>
-					<SearchBar />
-					{list.map((category: Category) => (
-						<li
-							key={category.id}
-							onClick={() => handleCategoryClick(category.name)}
-						>
-							<Link to={`category/${category.name}`}>{category.name}</Link>
-						</li>
-					))}
-				</>
-			)}
-			<li>
-				<Link to={'category/random'}>I cant decide</Link>
-			</li>
-		</ul>
+		<div>
+			<Row>
+				{list.map((category: Cat) => (
+					<Col
+						onClick={() => handleCategoryClick(category.name)}
+						key={category.id}
+						xs={12}
+						sm={6}
+						md={4}
+						lg={4}
+						xl={3}
+						xxl={3}
+					>
+						<Category>{category.name.toUpperCase()}</Category>
+					</Col>
+				))}
+			</Row>
+		</div>
 	)
 }
 
