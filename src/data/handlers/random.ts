@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
-import { Joke } from "../types";
+import { AxiosResponse } from 'axios'
+import { Joke } from '../types'
 
 export function randomSucess(response: AxiosResponse): Joke {
-  return response.data;
+	return response.data
 }

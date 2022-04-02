@@ -1,6 +1,6 @@
-import { Joke } from "./joke";
+import { Joke } from './joke'
 
 export type Search = {
-  total: number;
-  result: Joke[];
-};
+	total: number
+	result: Joke[]
+}
