@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CHUCK_API } from '..'
+import { CHUCK_API } from '../consts'
 import { randomSucess } from '../handlers'
 import { Joke } from '../types'
 

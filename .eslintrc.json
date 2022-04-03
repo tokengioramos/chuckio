@@ -18,6 +18,7 @@
 		"sourceType": "module"
 	},
 	"plugins": ["react", "@typescript-eslint"],
+	"ignorePatterns": ["*.woff2"],
 	"rules": {
 		"indent": ["error", "tab"],
 		"linebreak-style": 0,

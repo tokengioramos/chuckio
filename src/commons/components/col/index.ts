@@ -8,10 +8,12 @@ interface ColProps extends HtmlHTMLAttributes<HTMLDivElement> {
 	lg?: number
 	xl?: number
 	xxl?: number
+	square?: boolean
 }
 
-const makeColumns = (size = 12) => css`
+const makeColumns = (size = 12, square = false) => css`
 	max-width: ${100 / (12 / size) + '%'};
+	height: ${square && 100 / (12 / size) + 'vh'};
 	flex: 0 0 ${100 / (12 / size) + '%'};
 `
 
@@ -19,30 +21,28 @@ const Col = styled.div<ColProps>`
 	flex-basis: 0;
 	flex-grow: 1;
 	width: 100%;
-	min-height: 1px;
 	box-sizing: border-box;
-	padding: 10px;
 
-	${({ xs }) => makeColumns(xs)}
+	${({ xs, square }) => makeColumns(xs, square)}
 
 	@media only screen and (min-width: 576px) {
-		${({ sm }) => sm && makeColumns(sm)}
+		${({ sm, square }) => sm && makeColumns(sm, square)}
 	}
 
 	@media only screen and (min-width: 768px) {
-		${({ md }) => md && makeColumns(md)}
+		${({ md, square }) => md && makeColumns(md, square)}
 	}
 
 	@media only screen and (min-width: 992px) {
-		${({ lg }) => lg && makeColumns(lg)}
+		${({ lg, square }) => lg && makeColumns(lg, square)}
 	}
 
 	@media only screen and (min-width: 1200px) {
-		${({ xl }) => xl && makeColumns(xl)}
+		${({ xl, square }) => xl && makeColumns(xl, square)}
 	}
 
 	@media only screen and (min-width: 1400px) {
-		${({ xxl }) => xxl && makeColumns(xxl)}
+		${({ xxl, square }) => xxl && makeColumns(xxl, square)}
 	}
 `
 

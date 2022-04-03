@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CHUCK_API } from '..'
+import { CHUCK_API } from '../consts'
 import { categorySuccess } from '../handlers/'
 import { Category } from '../types'
 

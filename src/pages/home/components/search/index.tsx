@@ -6,8 +6,9 @@ import {
 	getSearchResult,
 	searchResult,
 } from '../../../../store/slices'
+import { SearchBar, SearchContainer } from '../../style/search'
 
-const SearchBar = () => {
+const SearchHome = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const result = useSelector(searchResult)
@@ -20,11 +21,10 @@ const SearchBar = () => {
 	}
 
 	return (
-		<form onSubmit={(e) => onSubmitHandle(e)}>
-			<input type="search" name="search" />
-			<button type="submit">Search</button>
-		</form>
+		<SearchContainer onSubmit={(e) => onSubmitHandle(e)}>
+			<SearchBar placeholder="search..." />
+		</SearchContainer>
 	)
 }
 
-export { SearchBar }
+export { SearchHome }
