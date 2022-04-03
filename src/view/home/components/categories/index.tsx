@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col } from '../../../../commons/components/col'
+import { Col } from '../../../../commons/col'
 import { Category } from '../../../../data/types/category'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -12,7 +12,7 @@ import {
 	CategoryCard,
 	CategoryCaption,
 	getCategoryIcon,
-} from '../../style/category'
+} from '../../styled/category'
 
 const CategoriesHome = () => {
 	const dispatch = useDispatch()

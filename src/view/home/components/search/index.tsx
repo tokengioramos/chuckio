@@ -6,7 +6,7 @@ import {
 	getSearchResult,
 	searchResult,
 } from '../../../../store/slices'
-import { SearchBar, SearchContainer } from '../../style/search'
+import { SearchBar, SearchContainer } from '../../styled/search'
 
 const SearchHome = () => {
 	const dispatch = useDispatch()

@@ -6,13 +6,21 @@ import {
 	TitleArea,
 	Subtitle,
 	Title,
-} from '../../style/header'
+} from '../styled/header'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { useDispatch } from 'react-redux'
+import { toggleSidebar } from '../../../store/slices'
 
-const HeaderHome = () => {
+const HeaderApp = () => {
+	const dispatch = useDispatch()
+
+	function toggleHandler() {
+		dispatch(toggleSidebar())
+	}
+
 	return (
 		<HeaderContainer>
-			<GiHamburgerMenu size={25} />
+			<GiHamburgerMenu size={25} onClick={() => toggleHandler()} />
 			<HeaderContent>
 				<TitleArea>
 					<Title>Chuck.io</Title>
@@ -24,4 +32,4 @@ const HeaderHome = () => {
 	)
 }
 
-export { HeaderHome }
+export { HeaderApp }

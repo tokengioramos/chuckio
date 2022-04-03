@@ -54,18 +54,16 @@ const CategoryCaption = styled.div`
 const CategoryCard = styled.div`
 	height: 100%;
 	display: flex;
+	overflow: hidden;
+	min-height: 160px;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-evenly;
 	transition: 0.3s transform;
+	justify-content: space-evenly;
 
 	cursor: pointer;
 	svg {
 		font-size: 3em;
-	}
-
-	&:hover {
-		transform: scale(1.1);
 	}
 `
 

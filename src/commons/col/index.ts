@@ -13,7 +13,6 @@ interface ColProps extends HtmlHTMLAttributes<HTMLDivElement> {
 
 const makeColumns = (size = 12, square = false) => css`
 	max-width: ${100 / (12 / size) + '%'};
-	height: ${square && 100 / (12 / size) + 'vh'};
 	flex: 0 0 ${100 / (12 / size) + '%'};
 `
 
