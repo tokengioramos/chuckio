@@ -4,6 +4,18 @@ import { RootState } from '..'
 import { CategoriesAPI } from '../../data/requests/categories'
 import { Category } from '../../data/types'
 
+interface CategoryState {
+	activeCategory: string
+	list: Category[]
+	loading: boolean
+}
+
+const initialState = {
+	activeCategory: '',
+	list: [],
+	loading: false,
+} as CategoryState
+
 export const getCategories = createAsyncThunk(
 	'categories/get',
 	async () => await CategoriesAPI.get()
@@ -11,11 +23,7 @@ export const getCategories = createAsyncThunk(
 
 const slice = createSlice({
 	name: 'category',
-	initialState: {
-		activeCategory: '',
-		list: [] as Category[],
-		loading: false,
-	},
+	initialState,
 	reducers: {
 		changeActiveCategory(state, action: PayloadAction<string>) {
 			return { ...state, activeCategory: action.payload }

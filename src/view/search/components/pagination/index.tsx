@@ -25,6 +25,7 @@ const SearchPagination = () => {
 	const canRenderLastButton = active < pageQuantity - buttonsInAdvance + 1
 
 	function handlePageClick(page: number) {
+		window.scrollTo(0, 0)
 		dispatch(changeActivePage(page))
 	}
 

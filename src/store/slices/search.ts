@@ -1,9 +1,20 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RejectedActionFromAsyncThunk } from '@reduxjs/toolkit/dist/matchers'
 import toast from 'react-hot-toast'
 import { RootState } from '..'
 import { SearchAPI } from '../../data/requests/search'
 import { Search } from '../../data/types'
+
+interface SearchState {
+	searchResult: Search
+	loading: boolean
+	page: number
+}
+
+const initialState = {
+	searchResult: {},
+	loading: false,
+	page: 1,
+} as SearchState
 
 export const getSearchResult = createAsyncThunk(
 	'search/get',
@@ -12,7 +23,7 @@ export const getSearchResult = createAsyncThunk(
 
 const slice = createSlice({
 	name: 'search',
-	initialState: { searchResult: {} as Search, loading: false, page: 1 },
+	initialState,
 	reducers: {
 		clearSearchResults(state) {
 			return { ...state, searchResult: {} as Search, page: 1 }

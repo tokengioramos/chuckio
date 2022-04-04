@@ -3,7 +3,13 @@ import toast from 'react-hot-toast'
 import { RootState } from '..'
 import { JokesAPI } from '../../data/requests/random'
 import { Joke } from '../../data/types'
-import { PayloadError } from '../../data/types/error'
+
+interface JokeState {
+	activeJoke: Joke
+	loading: boolean
+}
+
+const initialState = { activeJoke: {}, loading: false } as JokeState
 
 export const getJoke = createAsyncThunk(
 	'jokes/get',
@@ -17,7 +23,7 @@ export const getJokeByCategory = createAsyncThunk(
 
 const slice = createSlice({
 	name: 'joke',
-	initialState: { activeJoke: {} as Joke, loading: false },
+	initialState,
 	reducers: {
 		clearActiveJoke(state) {
 			return {

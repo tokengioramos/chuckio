@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '..'
 
+interface AppState {
+	sidebar: boolean
+}
+
+const initialState = { sidebar: false } as AppState
+
 const slice = createSlice({
 	name: 'app',
-	initialState: { sidebar: false },
+	initialState,
 	reducers: {
 		toggleSidebar(state) {
 			return { ...state, sidebar: !state.sidebar }
