@@ -30,7 +30,7 @@ const SidebarApp = () => {
 					<GiBirdHouse></GiBirdHouse>
 					{'Home'}
 				</MenuItem>
-				<MenuItem onClick={() => navigateHandler('/search')}>
+				<MenuItem onClick={() => navigateHandler('search')}>
 					<GiSpectacleLenses />
 					{'Search'}
 				</MenuItem>

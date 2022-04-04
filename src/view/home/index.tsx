@@ -31,7 +31,7 @@ const HomePage = () => {
 		dispatch(clearActiveCategory())
 	}
 
-	useEffect(() => startUp())
+	useEffect(() => startUp(), [])
 
 	return (
 		<CardContainer>
@@ -42,7 +42,7 @@ const HomePage = () => {
 					xs={4}
 					md={2.4}
 				>
-					<Link to={`category/${category.name}`}>
+					<Link to={`/category/${category.name}`}>
 						<CategoryCard>
 							{getCategoryIcon(category.id)}
 							<CardCaption>{category.name}</CardCaption>
@@ -51,7 +51,7 @@ const HomePage = () => {
 				</Col>
 			))}
 			<Col xs={8} md={9.6}>
-				<Link to="category/random">
+				<Link to="/category/random">
 					<CategoryCard>
 						{getCategoryIcon(-1)}
 						<CardCaption>{'Random'}</CardCaption>

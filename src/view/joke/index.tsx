@@ -33,7 +33,7 @@ const JokePage = () => {
 					? getJokeByCategory(activeCategoryDisplay)
 					: getJoke()
 			)
-	}, [joke])
+	}, [joke.value])
 
 	function reloadClickHandler() {
 		dispatch(clearActiveJoke())
