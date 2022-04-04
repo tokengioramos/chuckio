@@ -47,8 +47,8 @@ function getCategoryIcon(id: number) {
 	)
 }
 
-const CategoryCaption = styled.div`
-	font-size: 1.5em;
+const CardCaption = styled.div`
+	font-size: ${({ theme }) => theme.sizes.medium};
 	text-transform: capitalize;
 `
 const CategoryCard = styled.div`
@@ -63,8 +63,8 @@ const CategoryCard = styled.div`
 
 	cursor: pointer;
 	svg {
-		font-size: 3em;
+		font-size: ${({ theme }) => theme.sizes.large};
 	}
 `
 
-export { CategoryCard, CategoryCaption, getCategoryIcon }
+export { CategoryCard, CardCaption, getCategoryIcon }

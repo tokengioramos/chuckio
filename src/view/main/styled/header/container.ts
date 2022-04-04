@@ -7,7 +7,7 @@ const HeaderContainer = styled.div`
 	padding: 10px;
 	position: sticky;
 	align-items: center;
-	background: ${({ theme }) => theme.dark};
+	background: ${({ theme }) => theme.colors.dark};
 
 	svg {
 		cursor: pointer;

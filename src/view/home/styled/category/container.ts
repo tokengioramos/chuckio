@@ -10,13 +10,13 @@ const CardContainer = styled.div`
 	justify-content: 'flex-start';
 
 	${Col}:nth-child(even) {
-		background: ${({ theme }) => theme.primary};
+		background: ${({ theme }) => theme.colors.primary};
 	}
 	${Col}:nth-child(odd) {
-		background: ${({ theme }) => theme.secondary};
+		background: ${({ theme }) => theme.colors.secondary};
 	}
 	${Col}:last-child {
-		background: ${({ theme }) => theme.mainGradient};
+		background: ${({ theme }) => theme.colors.mainGradient};
 	}
 `
 

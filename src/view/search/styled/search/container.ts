@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 const SearchContainer = styled.form`
 	display: flex;
-	margin: 20px 0 20px 0;
+	margin: 20px;
 	justify-content: center;
 `
 
-export { SearchContainer }
+const Sender = styled.button`
+	display: none;
+`
+
+export { SearchContainer, Sender }

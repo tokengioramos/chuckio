@@ -7,8 +7,8 @@ const TitleArea = styled.div`
 `
 
 const Subtitle = styled.span`
-	font-size: 12px;
-	color: #959595;
+	font-size: ${({ theme }) => theme.sizes.small};
+	color: ${({ theme }) => theme.colors.grayLight};
 `
 const Title = styled.span`
 	margin-bottom: 5px;

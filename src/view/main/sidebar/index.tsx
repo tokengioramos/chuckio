@@ -8,21 +8,29 @@ import {
 } from '../styled/sidebar'
 import { sidebarOpen, toggleSidebar } from '../../../store/slices'
 import { GiBirdHouse, GiSpectacleLenses } from 'react-icons/gi'
+import { useNavigate } from 'react-router-dom'
 const SidebarApp = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const open = useSelector(sidebarOpen)
 
 	function backdropClickHandler() {
 		dispatch(toggleSidebar())
 	}
+
+	function navigateHandler(path: string) {
+		dispatch(toggleSidebar())
+		navigate(path)
+	}
+
 	return open ? (
 		<SidebarContainer>
 			<SidebarMenu>
-				<MenuItem>
+				<MenuItem onClick={() => navigateHandler('/')}>
 					<GiBirdHouse></GiBirdHouse>
 					{'Home'}
 				</MenuItem>
-				<MenuItem>
+				<MenuItem onClick={() => navigateHandler('/search')}>
 					<GiSpectacleLenses />
 					{'Search'}
 				</MenuItem>

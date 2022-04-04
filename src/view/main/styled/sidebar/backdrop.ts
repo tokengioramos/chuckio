@@ -6,7 +6,7 @@ const SidebarBackdrop = styled.div`
 			background: transparent;
 		}
 		to {
-			background: ${({ theme }) => theme.backdrop};
+			background: ${({ theme }) => theme.colors.darkOpacity};
 		}
 	}
 

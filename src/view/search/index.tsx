@@ -1,22 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Joke } from '../../data/types'
-import { searchResult, searchLoading } from '../../store/slices/search'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { clearSearchResults } from '../../store/slices'
+import { Search, SearchResult } from './components/'
+import { SearchPagination } from './components/pagination'
 
 const SearchPage = () => {
-	const search = useSelector(searchResult)
-	const loading = useSelector(searchLoading)
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(clearSearchResults())
+	})
 
 	return (
-		<div>
-			<Link to="/">back</Link>
-			{loading ? (
-				<h2>loading...</h2>
-			) : (
-				search.result.map((joke: Joke) => <div key={joke.id}>{joke.value}</div>)
-			)}
-		</div>
+		<>
+			<Search />
+			<SearchResult />
+			<SearchPagination />
+		</>
 	)
 }
 

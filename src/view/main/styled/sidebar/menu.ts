@@ -13,7 +13,7 @@ const MenuItem = styled.button`
 	padding-left: 15px;
 	margin-bottom: 2px;
 	align-items: center;
-	background: ${({ theme }) => theme.darkGradient};
+	background: ${({ theme }) => theme.colors.darkGradient};
 
 	svg {
 		font-size: 25px;
@@ -35,8 +35,8 @@ const SidebarMenu = styled.aside`
 	height: 100%;
 	width: 300px;
 	position: absolute;
-	animation: slide 1s forwards;
-	background: ${({ theme }) => theme.dark};
+	animation: slide 0.3s forwards;
+	background: ${({ theme }) => theme.colors.dark};
 `
 
 export { MenuItem, SidebarMenu }
