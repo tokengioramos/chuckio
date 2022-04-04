@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RejectedActionFromAsyncThunk } from '@reduxjs/toolkit/dist/matchers'
+import toast from 'react-hot-toast'
 import { RootState } from '..'
 import { SearchAPI } from '../../data/requests/search'
 import { Search } from '../../data/types'
@@ -21,7 +23,7 @@ const slice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getSearchResult.pending, (state) => {
-			return { ...state, loading: true, page: 1 }
+			return { ...state, loading: true, searchResult: {} as Search, page: 1 }
 		})
 		builder.addCase(
 			getSearchResult.fulfilled,
@@ -29,6 +31,10 @@ const slice = createSlice({
 				return { ...state, loading: false, searchResult: action.payload }
 			}
 		)
+		builder.addCase(getSearchResult.rejected, (state, action) => {
+			toast.error(String(action.error.message))
+			return { ...state, loading: false }
+		})
 	},
 })
 

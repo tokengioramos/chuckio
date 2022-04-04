@@ -7,8 +7,12 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     margin:0;
-    transition: all 0.50s linear;
     color: ${({ theme }) => theme.colors.white};
     background: ${({ theme }) => theme.colors.body};
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 `

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast'
 import { RootState } from '..'
 import { CategoriesAPI } from '../../data/requests/categories'
 import { Category } from '../../data/types'
@@ -38,7 +39,7 @@ const slice = createSlice({
 			}
 		)
 		builder.addCase(getCategories.rejected, (state, action) => {
-			console.error(action)
+			toast.error(String(action.error.message))
 			return { ...state, loading: false }
 		})
 	},

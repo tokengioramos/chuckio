@@ -5,6 +5,7 @@ const SidebarContainer = styled.div`
 	width: 100vw;
 	position: fixed;
 	height: calc(100vh - 55px);
+	z-index: 2;
 `
 
 export { SidebarContainer }

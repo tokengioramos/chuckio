@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Col } from '../../commons/col'
-import { Loader } from '../../commons/loader'
 import { Category } from '../../data/types'
 import { clearActiveJoke } from '../../store/slices'
 import {
@@ -9,7 +9,6 @@ import {
 	clearActiveCategory,
 	categoryList,
 	changeActiveCategory,
-	categoryLoading,
 } from '../../store/slices/category'
 import {
 	CardContainer,
@@ -21,7 +20,6 @@ import {
 const HomePage = () => {
 	const dispatch = useDispatch()
 	const list = useSelector(categoryList)
-	const loading = useSelector(categoryLoading)
 
 	function handleCategoryClick(category: string) {
 		dispatch(changeActiveCategory(category))
@@ -33,13 +31,9 @@ const HomePage = () => {
 		dispatch(clearActiveCategory())
 	}
 
-	useEffect(() => {
-		startUp()
-	}, [])
+	useEffect(() => startUp())
 
-	return loading ? (
-		<Loader></Loader>
-	) : (
+	return (
 		<CardContainer>
 			{list.map((category: Category) => (
 				<Col
@@ -47,19 +41,22 @@ const HomePage = () => {
 					key={category.id}
 					xs={4}
 					md={2.4}
-					square={true}
 				>
-					<CategoryCard>
-						{getCategoryIcon(category.id)}
-						<CardCaption>{category.name}</CardCaption>
-					</CategoryCard>
+					<Link to={`category/${category.name}`}>
+						<CategoryCard>
+							{getCategoryIcon(category.id)}
+							<CardCaption>{category.name}</CardCaption>
+						</CategoryCard>
+					</Link>
 				</Col>
 			))}
 			<Col xs={8} md={9.6}>
-				<CategoryCard>
-					{getCategoryIcon(-1)}
-					<CardCaption>{'Random'}</CardCaption>
-				</CategoryCard>
+				<Link to="category/random">
+					<CategoryCard>
+						{getCategoryIcon(-1)}
+						<CardCaption>{'Random'}</CardCaption>
+					</CategoryCard>
+				</Link>
 			</Col>
 		</CardContainer>
 	)

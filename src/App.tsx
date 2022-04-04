@@ -7,13 +7,15 @@ import { ThemeProvider } from 'styled-components'
 import { GlobalStyles } from './globalStyles'
 import { mainTheme } from './Themes'
 import { HeaderApp, SidebarApp } from './view/main/'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 	return (
-		<ThemeProvider theme={mainTheme}>
-			<GlobalStyles />
-			<Provider store={store}>
+		<Provider store={store}>
+			<ThemeProvider theme={mainTheme}>
+				<GlobalStyles />
 				<HeaderApp></HeaderApp>
+				<Toaster position="bottom-center" />
 				<BrowserRouter>
 					<SidebarApp></SidebarApp>
 					<Routes>
@@ -23,8 +25,8 @@ function App() {
 						<Route path="category/*" element={<JokePage />}></Route>
 					</Routes>
 				</BrowserRouter>
-			</Provider>
-		</ThemeProvider>
+			</ThemeProvider>
+		</Provider>
 	)
 }
 

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
-const ResultCard = styled.div`
+const JokeCard = styled.div`
 	margin: 0 20px 10px 20px;
+	width: 100%;
 	padding: 15px;
 	background: ${({ theme }) => theme.colors.primary};
 `
@@ -15,6 +16,7 @@ const CardTitle = styled.div`
 
 const CardContent = styled.div`
 	margin: 20px 0;
+	word-break: break-word;
 `
 
 const CardDate = styled.div`
@@ -22,4 +24,4 @@ const CardDate = styled.div`
 	color: ${({ theme }) => theme.colors.grayLight};
 `
 
-export { ResultCard, CardContent, CardDate, CardTitle }
+export { JokeCard, CardContent, CardDate, CardTitle }

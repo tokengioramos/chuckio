@@ -13,10 +13,10 @@ const Spinner = styled.div`
 
 	width: 50px;
 	height: 50px;
+	margin: 15px 0;
 	background-size: contain;
 	animation: spin 1s infinite;
 	background-image: url(${logo});
-	margin-bottom: 15px;
 	animation-timing-function: linear;
 `
 

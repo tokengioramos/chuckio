@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Col } from '../../../../commons/col'
 import { Label } from '../../../../commons/label'
 import { Loader } from '../../../../commons/loader'
 import { Row } from '../../../../commons/row'
@@ -10,15 +9,16 @@ import {
 	searchLoading,
 	searchResult,
 } from '../../../../store/slices'
+import { pageSize } from '../../styled/pagination/container'
 import {
-	ResultCard,
+	JokeCard,
 	CardContent,
 	CardDate,
 	CardTitle,
-} from '../../styled/result/card'
+} from '../../../../commons/joke/card'
+import { format, parseISO } from 'date-fns'
 
 const SearchResult = () => {
-	const pageSize = 10
 	const page = useSelector(activePage)
 	const search = useSelector(searchResult)
 	const loading = useSelector(searchLoading)
@@ -27,17 +27,17 @@ const SearchResult = () => {
 		<Loader></Loader>
 	) : (
 		<>
-			<Label>{search.total && `${search.total} jokes found`}</Label>
+			<Label>{search.result && `${search.total} jokes found`}</Label>
 			<Row>
 				{search.result
 					?.map((joke: Joke) => (
-						<Col key={joke.id}>
-							<ResultCard>
-								<CardTitle>{joke.categories[0] || 'No category'}</CardTitle>
-								<CardContent>{joke.value}</CardContent>
-								<CardDate>{joke.created_at}</CardDate>
-							</ResultCard>
-						</Col>
+						<JokeCard key={joke.id}>
+							<CardTitle>{joke.categories[0] || 'No category'}</CardTitle>
+							<CardContent>{joke.value}</CardContent>
+							<CardDate>
+								{format(parseISO(joke.created_at.toString()), 'PPP')}
+							</CardDate>
+						</JokeCard>
 					))
 					.slice((page - 1) * pageSize, page * pageSize)}
 			</Row>
