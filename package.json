@@ -1,6 +1,6 @@
 {
 	"name": "chuckio",
-	"private": true,
+	"private": false,
 	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite",
@@ -24,6 +24,7 @@
 		"styled-components": "^5.3.5"
 	},
 	"devDependencies": {
+		"@types/node": "^17.0.23",
 		"@types/react": "^17.0.33",
 		"@types/react-dom": "^17.0.10",
 		"@typescript-eslint/eslint-plugin": "^5.17.0",

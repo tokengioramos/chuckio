@@ -16,7 +16,7 @@ function App() {
 				<GlobalStyles />
 				<HeaderApp></HeaderApp>
 				<Toaster position="bottom-center" />
-				<BrowserRouter>
+				<BrowserRouter basename={process.env.PUBLIC_URL}>
 					<SidebarApp></SidebarApp>
 					<Routes>
 						<Route path="*" element={<HomePage />}></Route>
