@@ -55,7 +55,7 @@ const HomePage = () => {
 					</Link>
 				</Col>
 			))}
-			<Col onClick={() => handleCategoryClick('random')} xs={8} md={9.6}>
+			<Col xs={8} md={9.6}>
 				<Link to={'category/random'}>
 					<CategoryCard>
 						{getCategoryIcon(-1)}
