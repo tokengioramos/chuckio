@@ -16,16 +16,14 @@ function App() {
 				<GlobalStyles />
 				<HeaderApp></HeaderApp>
 				<Toaster position="bottom-center" />
-				<BrowserRouter>
-					<SidebarApp></SidebarApp>
-					<Routes>
-						<Route path="*" element={<HomePage />}></Route>
-						<Route path={'/'} element={<HomePage />}></Route>
-						<Route path={'search'} element={<SearchPage />}></Route>
-						<Route path={'category/*'} element={<JokePage />}></Route>
-						<Route element={<HomePage />}></Route>
-					</Routes>
-				</BrowserRouter>
+				<SidebarApp></SidebarApp>
+				<Routes>
+					<Route path="*" element={<HomePage />}></Route>
+					<Route path={'/'} element={<HomePage />}></Route>
+					<Route path={'search'} element={<SearchPage />}></Route>
+					<Route path={'category/*'} element={<JokePage />}></Route>
+					<Route element={<HomePage />}></Route>
+				</Routes>
 			</ThemeProvider>
 		</Provider>
 	)
