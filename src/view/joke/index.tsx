@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Loader } from '../../commons/loader'
 import {
 	activeCategory,
@@ -19,19 +19,26 @@ import {
 import { Row } from '../../commons/row'
 import { Label } from '../../commons/label'
 import { format, parseISO } from 'date-fns'
+import { BASE_URL } from '../../data/consts'
 
 const JokePage = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
 	const activeCategoryDisplay = useSelector(activeCategory)
 	const joke = useSelector(activeJoke)
 	const loading = useSelector(jokeLoading)
 
 	useEffect(() => {
+		if (!activeCategoryDisplay) {
+			navigate(BASE_URL)
+			return
+		}
+
 		if (!joke.value)
 			dispatch(
-				activeCategoryDisplay
-					? getJokeByCategory(activeCategoryDisplay)
-					: getJoke()
+				activeCategoryDisplay === 'random'
+					? getJoke()
+					: getJokeByCategory(activeCategoryDisplay)
 			)
 	}, [joke.value])
 
@@ -48,7 +55,7 @@ const JokePage = () => {
 			</Label>
 			<Row>
 				<JokeCard key={joke.id}>
-					<CardTitle>{activeCategoryDisplay || 'Random'}</CardTitle>
+					<CardTitle>{activeCategoryDisplay}</CardTitle>
 					<CardContent>{joke.value}</CardContent>
 					<CardDate>
 						{joke.created_at &&

@@ -9,6 +9,7 @@ import {
 import { sidebarOpen, toggleSidebar } from '../../../store/slices'
 import { GiBirdHouse, GiSpectacleLenses } from 'react-icons/gi'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../../../data/consts'
 const SidebarApp = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -26,11 +27,11 @@ const SidebarApp = () => {
 	return open ? (
 		<SidebarContainer>
 			<SidebarMenu>
-				<MenuItem onClick={() => navigateHandler('/')}>
+				<MenuItem onClick={() => navigateHandler(BASE_URL)}>
 					<GiBirdHouse></GiBirdHouse>
 					{'Home'}
 				</MenuItem>
-				<MenuItem onClick={() => navigateHandler('search')}>
+				<MenuItem onClick={() => navigateHandler(`${BASE_URL}/search`)}>
 					<GiSpectacleLenses />
 					{'Search'}
 				</MenuItem>
