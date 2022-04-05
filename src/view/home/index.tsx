@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Col } from '../../commons/col'
+import { Loader } from '../../commons/loader'
 import { Category } from '../../data/types'
 import { clearActiveJoke } from '../../store/slices'
 import {
@@ -9,6 +10,7 @@ import {
 	clearActiveCategory,
 	categoryList,
 	changeActiveCategory,
+	categoryLoading,
 } from '../../store/slices/category'
 import {
 	CardContainer,
@@ -20,6 +22,7 @@ import {
 const HomePage = () => {
 	const dispatch = useDispatch()
 	const list = useSelector(categoryList)
+	const loading = useSelector(categoryLoading)
 
 	function handleCategoryClick(category: string) {
 		dispatch(changeActiveCategory(category))
@@ -33,7 +36,9 @@ const HomePage = () => {
 
 	useEffect(() => startUp(), [])
 
-	return (
+	return loading ? (
+		<Loader></Loader>
+	) : (
 		<CardContainer>
 			{list.map((category: Category) => (
 				<Col
