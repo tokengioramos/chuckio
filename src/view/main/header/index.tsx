@@ -20,7 +20,11 @@ const HeaderApp = () => {
 
 	return (
 		<HeaderContainer>
-			<GiHamburgerMenu size={25} onClick={() => toggleHandler()} />
+			<GiHamburgerMenu
+				data-testid="hamburger"
+				size={25}
+				onClick={() => toggleHandler()}
+			/>
 			<HeaderContent>
 				<TitleArea>
 					<Title>Chuck.io</Title>

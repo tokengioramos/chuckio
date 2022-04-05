@@ -7,6 +7,7 @@ import { SearchBar, SearchContainer, Sender } from '../../styled/search'
 const Search = () => {
 	const dispatch = useDispatch()
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	function onSubmitHandle(e: any) {
 		const query = e.target.children.search.value
 		e.preventDefault()
@@ -20,9 +21,17 @@ const Search = () => {
 	}
 
 	return (
-		<SearchContainer onSubmit={(e) => onSubmitHandle(e)}>
-			<SearchBar maxLength={120} name="search" placeholder="search..." />
-			<Sender type="submit"></Sender>
+		<SearchContainer
+			data-testid="searchForm"
+			onSubmit={(e) => onSubmitHandle(e)}
+		>
+			<SearchBar
+				data-testid="searchBar"
+				maxLength={120}
+				name="search"
+				placeholder="search..."
+			/>
+			<Sender data-testid="sender" type="submit"></Sender>
 		</SearchContainer>
 	)
 }

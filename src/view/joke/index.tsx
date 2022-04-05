@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { Loader } from '../../commons/loader'
 import {
 	activeCategory,
@@ -22,20 +21,14 @@ import { format, parseISO } from 'date-fns'
 
 const JokePage = () => {
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
 	const activeCategoryDisplay = useSelector(activeCategory)
 	const joke = useSelector(activeJoke)
 	const loading = useSelector(jokeLoading)
 
 	useEffect(() => {
-		if (!activeCategoryDisplay) {
-			navigate('/')
-			return
-		}
-
 		if (!joke.value)
 			dispatch(
-				activeCategoryDisplay === 'random'
+				!activeCategoryDisplay
 					? getJoke()
 					: getJokeByCategory(activeCategoryDisplay)
 			)
@@ -53,10 +46,12 @@ const JokePage = () => {
 				{'Click to get a new one.'}
 			</Label>
 			<Row>
-				<JokeCard key={joke.id}>
-					<CardTitle>{activeCategoryDisplay}</CardTitle>
-					<CardContent>{joke.value}</CardContent>
-					<CardDate>
+				<JokeCard title="cardId">
+					<CardTitle title="cardTitle">
+						{activeCategoryDisplay || 'Random'}
+					</CardTitle>
+					<CardContent title="cardValue">{joke.value}</CardContent>
+					<CardDate title="cardDate">
 						{joke.created_at &&
 							format(parseISO(joke.created_at.toString()), 'PPP')}
 					</CardDate>

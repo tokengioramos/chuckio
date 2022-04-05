@@ -26,16 +26,25 @@ const SidebarApp = () => {
 	return open ? (
 		<SidebarContainer>
 			<SidebarMenu>
-				<MenuItem onClick={() => navigateHandler('/')}>
+				<MenuItem
+					data-testid="menuItemHome"
+					onClick={() => navigateHandler('/')}
+				>
 					<GiBirdHouse></GiBirdHouse>
 					{'Home'}
 				</MenuItem>
-				<MenuItem onClick={() => navigateHandler('search')}>
+				<MenuItem
+					data-testid="menuItemSearch"
+					onClick={() => navigateHandler('search')}
+				>
 					<GiSpectacleLenses />
 					{'Search'}
 				</MenuItem>
 			</SidebarMenu>
-			<SidebarBackdrop onClick={() => backdropClickHandler()}></SidebarBackdrop>
+			<SidebarBackdrop
+				data-testid="backdrop"
+				onClick={() => backdropClickHandler()}
+			></SidebarBackdrop>
 		</SidebarContainer>
 	) : (
 		<></>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { HomePage } from '.'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import { HashRouter } from 'react-router-dom'
@@ -9,11 +8,19 @@ import 'whatwg-fetch'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import { CHUCK_API } from '../../data/consts'
+import faker from 'faker'
 import { mainTheme } from '../../Themes'
+import { JokePage } from '.'
+
+const randomJoke = faker.datatype.string()
 
 const server = setupServer(
-	rest.get(`${CHUCK_API}/categories`, (req, res, ctx) => {
-		return res(ctx.json(['a', 'b']))
+	rest.get(`${CHUCK_API}/random`, (req, res, ctx) => {
+		return res(
+			ctx.json({
+				value: randomJoke,
+			})
+		)
 	})
 )
 
@@ -22,7 +29,7 @@ function makeSut() {
 		<Provider store={store}>
 			<HashRouter>
 				<ThemeProvider theme={mainTheme}>
-					<HomePage />
+					<JokePage />
 				</ThemeProvider>
 			</HashRouter>
 		</Provider>
@@ -35,22 +42,11 @@ beforeAll(() => server.listen())
 afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
 
-describe('HomePage', () => {
-	it('Loads all categories', async () => {
+describe('JokePage', () => {
+	it('Loads a random joke', async () => {
 		const { sut } = makeSut()
 
-		const categoryA = await sut.findByText('a')
-		const categoryB = await sut.findByText('b')
-
-		expect(categoryA).toBeInTheDocument()
-		expect(categoryB).toBeInTheDocument()
-	})
-
-	it('Loads random button', async () => {
-		const { sut } = makeSut()
-
-		const categoryRandom = await sut.findByText('Random')
-
-		expect(categoryRandom).toBeInTheDocument()
+		const content = await sut.findByTitle('cardValue')
+		expect(content.textContent).toBe(randomJoke)
 	})
 })
