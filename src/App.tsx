@@ -8,7 +8,6 @@ import { GlobalStyles } from './globalStyles'
 import { mainTheme } from './Themes'
 import { HeaderApp, SidebarApp } from './view/main/'
 import { Toaster } from 'react-hot-toast'
-import { BASE_URL } from './data/consts'
 
 function App() {
 	return (
@@ -21,12 +20,9 @@ function App() {
 					<SidebarApp></SidebarApp>
 					<Routes>
 						<Route path="*" element={<HomePage />}></Route>
-						<Route path={BASE_URL} element={<HomePage />}></Route>
-						<Route path={`${BASE_URL}/search`} element={<SearchPage />}></Route>
-						<Route
-							path={`${BASE_URL}/category/*`}
-							element={<JokePage />}
-						></Route>
+						<Route path={'/'} element={<HomePage />}></Route>
+						<Route path={'search'} element={<SearchPage />}></Route>
+						<Route path={'category/*'} element={<JokePage />}></Route>
 						<Route element={<HomePage />}></Route>
 					</Routes>
 				</BrowserRouter>

@@ -19,7 +19,6 @@ import {
 import { Row } from '../../commons/row'
 import { Label } from '../../commons/label'
 import { format, parseISO } from 'date-fns'
-import { BASE_URL } from '../../data/consts'
 
 const JokePage = () => {
 	const dispatch = useDispatch()
@@ -30,7 +29,7 @@ const JokePage = () => {
 
 	useEffect(() => {
 		if (!activeCategoryDisplay) {
-			navigate(BASE_URL)
+			navigate('/')
 			return
 		}
 
